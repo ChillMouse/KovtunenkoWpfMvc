@@ -20,14 +20,19 @@ namespace kovtunenko_wpf_mvc_1
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
+        public MainWindow() {
             InitializeComponent();
         }
-        private void btnAuth_Click(object sender, RoutedEventArgs e)
-        {
-            View.MenuSystem menuSystem = new View.MenuSystem();
-            menuSystem.Show();
+        private void btnAuth_Click(object sender, RoutedEventArgs e) {
+            View.MenuSystem windowMenuSystem = new View.MenuSystem();
+            windowMenuSystem.Show();
+        }
+
+        private void btnAuthorizationMessageBox(object sender, RoutedEventArgs e) {
+            Button btnAuthorization = sender as Button;
+            if (btnAuthorization != null) {
+                MessageBox.Show($"Нажата кнопка \"{btnAuthorization.Content}\"");
+            }
         }
     }
 

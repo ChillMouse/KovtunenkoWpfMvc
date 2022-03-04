@@ -23,13 +23,21 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="2" HorizontalAlignment="Center" Grid.Row="0" TextWrapping="NoWrap" Text="Авторизация" FontSize="24" VerticalAlignment="Top" Width="160" Height="57" Grid.ColumnSpan="2"/>
-        <Button Grid.Column="2" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Top" Height="37" Width="245" Grid.ColumnSpan="2" Margin="11,36,0,0" Grid.RowSpan="5" Content="Авторизоваться" FontSize="20" Click="btnAuth_Click">
+        <TextBlock Name="txtBlockHeader" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="0" TextWrapping="NoWrap" Text="Авторизация" FontSize="24" VerticalAlignment="Top" Width="160" Height="57" Grid.ColumnSpan="2"/>
+        <Button Name="btnAuth" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Top" Height="37" Width="245" Grid.ColumnSpan="2" Margin="11,36,0,0" Grid.RowSpan="5" Content="Авторизоваться" FontSize="20" Click="btnAuth_Click">
         </Button>
-        <TextBox Grid.Column="3" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="158" FontSize="20" Margin="13,0,0,0" Grid.ColumnSpan="2"/>
-        <TextBox Grid.Column="3" HorizontalAlignment="Left" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="158" FontSize="20" Margin="13,15,0,0" Grid.ColumnSpan="2"/>
-        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Center" FontSize="20"/>
-        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="0,15,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox Grid.Column="3" Name="txtBoxLogin" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="158" FontSize="20" Margin="13,0,0,0" Grid.ColumnSpan="2"/>
+        <TextBox Grid.Column="3" Name="txtBoxPassword" HorizontalAlignment="Left" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="158" FontSize="20" Margin="13,15,0,0" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Column="2" Name="txtBlockLogin" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Grid.Column="2" Name="txtBlockPassword" HorizontalAlignment="Left" Margin="0,15,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" FontSize="20"/>
+        <Button Content="Нажать" HorizontalAlignment="Left" Margin="67,37,0,0" Grid.Row="1" VerticalAlignment="Top" Name="btnAuthorization" Click="btnAuthorizationMessageBox" Background="{x:Null}" BorderThickness="2,1,2,2">
+            <Button.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE81313"/>
+                    <GradientStop Color="#FF4824F9" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.BorderBrush>
+        </Button>
 
     </Grid>
 </Window>
