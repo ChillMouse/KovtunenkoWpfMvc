@@ -10,9 +10,8 @@ namespace DbApiCore {
         public static int UserInsert(string login, string password, string name, string surname) {
             string connectionString = @"Data Source=DESKTOP-PEI2NKM;Initial Catalog=Shop;Integrated Security=True";
             int rowChanged = 0;
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                try {
+            try {
+                using (SqlConnection connection = new SqlConnection(connectionString)){
                     connection.Open();
                     SqlCommand cmd = new SqlCommand
                     {
@@ -21,9 +20,11 @@ namespace DbApiCore {
                     };
                     rowChanged = cmd.ExecuteNonQuery();
                     connection.Close();
-                } catch (Exception e) {
-                    Console.WriteLine(e.Message);
                 }
+            } catch (Exception e) {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(e.Message);
+                Console.ResetColor();
             }
             return Convert.ToInt32(rowChanged > 0);
         }

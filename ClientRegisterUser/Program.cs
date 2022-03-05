@@ -14,6 +14,7 @@ using System.Configuration;
 namespace ClientRegisterUser {
     internal class Program {
         public static void Main() {
+            Console.Write("Регистрация нового пользователя\n\n");
             string login, password, name, surname;
             Console.Write("Введите логин: ");
             login = Console.ReadLine();
@@ -24,16 +25,18 @@ namespace ClientRegisterUser {
             Console.Write("Введите фамилию: ");
             surname = Console.ReadLine();
 
-            // Console.WriteLine($"{login}, {password} => {Hash.GetHashPassword(password)}");
-
             password = Hash.GetHashPassword(password);
 
             int result = DbCrud.UserInsert(login, password, name, surname);
 
             if (result == 1) {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Хэш пароля: {password}\nРегистрация нового пользователя проведена успешно");
+                Console.ResetColor();
             } else {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Регистрация провалена");
+                Console.ResetColor();
             }
 
             Console.Read();
