@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashPasswords", "HashPasswo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestHashFunction", "unitTestHashFunction\UnitTestHashFunction.csproj", "{023AA386-6666-4F95-9BEC-364234FCE812}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientRegisterUser", "ClientRegisterUser\ClientRegisterUser.csproj", "{212F15A2-ED8A-489B-9257-3414273975D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbApi", "DBClient\DbApi.csproj", "{9AF57D95-5A6A-4FDC-A5F0-2769956BFCA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{023AA386-6666-4F95-9BEC-364234FCE812}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{023AA386-6666-4F95-9BEC-364234FCE812}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{023AA386-6666-4F95-9BEC-364234FCE812}.Release|Any CPU.Build.0 = Release|Any CPU
+		{212F15A2-ED8A-489B-9257-3414273975D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{212F15A2-ED8A-489B-9257-3414273975D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{212F15A2-ED8A-489B-9257-3414273975D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{212F15A2-ED8A-489B-9257-3414273975D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AF57D95-5A6A-4FDC-A5F0-2769956BFCA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AF57D95-5A6A-4FDC-A5F0-2769956BFCA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AF57D95-5A6A-4FDC-A5F0-2769956BFCA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AF57D95-5A6A-4FDC-A5F0-2769956BFCA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

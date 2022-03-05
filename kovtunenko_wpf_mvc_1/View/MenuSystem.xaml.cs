@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace kovtunenko_wpf_mvc_1.View
+namespace KovtunenkoWpfMvc.View
 {
     /// <summary>
     /// Логика взаимодействия для MenuSystem.xaml
