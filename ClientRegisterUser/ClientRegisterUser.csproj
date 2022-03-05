@@ -51,7 +51,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DBClient\DbApi.csproj">
+    <ProjectReference Include="..\DbApi\DbApi.csproj">
       <Project>{9af57d95-5a6a-4fdc-a5f0-2769956bfca8}</Project>
       <Name>DbApi</Name>
     </ProjectReference>

@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KovtunenkoWpfMvc", "kovtunenko_wpf_mvc_1\KovtunenkoWpfMvc.csproj", "{A69FD8E9-99A2-44BA-BC30-18511F7E2527}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashPasswords", "HashPasswords\HashPasswords.csproj", "{2B7DD61A-1A1A-498E-B502-7999D3EEDB02}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestHashFunction", "unitTestHashFunction\UnitTestHashFunction.csproj", "{023AA386-6666-4F95-9BEC-364234FCE812}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientRegisterUser", "ClientRegisterUser\ClientRegisterUser.csproj", "{212F15A2-ED8A-489B-9257-3414273975D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbApi", "DBClient\DbApi.csproj", "{9AF57D95-5A6A-4FDC-A5F0-2769956BFCA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KovtunenkoWpfMvc", "KovtunenkoWpfMvc\KovtunenkoWpfMvc.csproj", "{A69FD8E9-99A2-44BA-BC30-18511F7E2527}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbApi", "DbApi\DbApi.csproj", "{9AF57D95-5A6A-4FDC-A5F0-2769956BFCA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A69FD8E9-99A2-44BA-BC30-18511F7E2527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A69FD8E9-99A2-44BA-BC30-18511F7E2527}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A69FD8E9-99A2-44BA-BC30-18511F7E2527}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A69FD8E9-99A2-44BA-BC30-18511F7E2527}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2B7DD61A-1A1A-498E-B502-7999D3EEDB02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2B7DD61A-1A1A-498E-B502-7999D3EEDB02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B7DD61A-1A1A-498E-B502-7999D3EEDB02}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,6 +31,10 @@ Global
 		{212F15A2-ED8A-489B-9257-3414273975D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{212F15A2-ED8A-489B-9257-3414273975D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{212F15A2-ED8A-489B-9257-3414273975D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A69FD8E9-99A2-44BA-BC30-18511F7E2527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A69FD8E9-99A2-44BA-BC30-18511F7E2527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A69FD8E9-99A2-44BA-BC30-18511F7E2527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A69FD8E9-99A2-44BA-BC30-18511F7E2527}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9AF57D95-5A6A-4FDC-A5F0-2769956BFCA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9AF57D95-5A6A-4FDC-A5F0-2769956BFCA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AF57D95-5A6A-4FDC-A5F0-2769956BFCA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
