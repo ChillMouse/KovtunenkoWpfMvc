@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+/// <summary>
+/// Автор ChillMouse
+/// </summary>
+
 namespace kovtunenko_wpf_mvc_1
 {
     /// <summary>
@@ -21,16 +25,26 @@ namespace kovtunenko_wpf_mvc_1
     public partial class MainWindow : Window
     {
         public MainWindow() {
-            InitializeComponent();
+            this.InitializeComponent();
         }
-        private void btnAuth_Click(object sender, RoutedEventArgs e) {
+        /// <summary>
+        /// Отслеживания нажатия на кнопку "Авторизация".
+        /// Происходит отображение нового окна.
+        /// </summary>
+        /// <param name="sender">Объект инициатора вызова</param>
+        /// <param name="e"></param>
+        private void AuthInApp(object sender, RoutedEventArgs e) {
             View.MenuSystem windowMenuSystem = new View.MenuSystem();
             windowMenuSystem.Show();
         }
-
-        private void btnAuthorizationMessageBox(object sender, RoutedEventArgs e) {
-            Button btnAuthorization = sender as Button;
-            if (btnAuthorization != null) {
+/// <summary>
+/// Отслеживания нажатия на кнопку "Нажать".
+/// Происходит отображение содержимого Content в кнопке.
+/// </summary>
+/// <param name="sender">Объект инициатора вызова функции</param>
+/// <param name="e"></param>
+        private void EventClickTest(object sender, RoutedEventArgs e) {
+            if (sender is Button btnAuthorization) {
                 MessageBox.Show($"Нажата кнопка \"{btnAuthorization.Content}\"");
             }
         }

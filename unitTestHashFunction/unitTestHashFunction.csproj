@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{023AA386-6666-4F95-9BEC-364234FCE812}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>unitTestHashFunction</RootNamespace>
-    <AssemblyName>unitTestHashFunction</AssemblyName>
+    <RootNamespace>UnitTestHashFunction</RootNamespace>
+    <AssemblyName>UnitTestHashFunction</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
