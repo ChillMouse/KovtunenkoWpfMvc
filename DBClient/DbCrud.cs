@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace DbApiCore {
     public static class DbCrud {
         public static int UserInsert(string login, string password, string name, string surname) {
-            string connectionString = @"metadata=res://*/Model.ShopModel.csdl|res://*/Model.ShopModel.ssdl|res://*/Model.ShopModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-PEI2NKM;initial catalog=Shop;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;";
+            string connectionString = @"Data Source=DESKTOP-PEI2NKM;Initial Catalog=Shop;Integrated Security=True";
             int result = 0;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -16,7 +16,7 @@ namespace DbApiCore {
                     connection.Open();
                     SqlCommand cmd = new SqlCommand
                     {
-                        CommandText = $"INSERT INTO 'Users' ('login', 'password') VALUES ('{login}', '{password}')",
+                        CommandText = $"INSERT INTO [Users] (username, password) VALUES ('{login}', '{password}');",
                         Connection = connection
                     };
                     result = cmd.ExecuteNonQuery();
