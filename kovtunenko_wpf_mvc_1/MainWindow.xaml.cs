@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 /// Автор ChillMouse
 /// </summary>
 
-namespace kovtunenko_wpf_mvc_1
+namespace KovtunenkoWpfMvc
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
