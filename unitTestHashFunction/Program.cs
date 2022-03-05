@@ -17,6 +17,7 @@ namespace UnitTestHashFunction {
             GetHashPasswordTest("123", "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3".ToUpper());
             GetHashPasswordTest("Passw0rdFinTech%123--1", "22add8a8852e0060962900543ad77c4383d38ccd1c1f5178f8290ba329e37009".ToUpper());
             GetHashPasswordTest("i-love-k-pop-lol", "378b380805b64c853c2bdf647f6fb74ef0a4d9a5c23a53896a035ccba6b0dd55".ToUpper());
+            GetHashPasswordTest("", "".ToUpper());
             Console.Read();  // Нужно, чтобы не закрывалась консоль
         }
         /// <summary>
@@ -26,6 +27,8 @@ namespace UnitTestHashFunction {
         /// <param name="waitValue">Ожидаемый результат программы</param>
         public static void GetHashPasswordTest(string testValue, string waitValue) {
             string result = Hash.GetHashPassword(testValue);
+
+            // Информация
             Console.WriteLine("UNIT TEST:\n");
             Console.WriteLine($"Тестовое значение на входе:    {testValue}");
             Console.WriteLine($"Ожидаемый результат:           {waitValue}");
@@ -41,6 +44,7 @@ namespace UnitTestHashFunction {
                 Console.WriteLine($"\n### FAIL ###");
                 Console.ResetColor(); // сбрасываем в стандартный
             }
+
             Console.Write("\n\n");
         }
     }
