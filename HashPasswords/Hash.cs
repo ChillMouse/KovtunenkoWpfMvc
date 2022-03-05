@@ -20,12 +20,15 @@ namespace HashPasswords {
         /// <param name="password">Строка, пароль пользователя</param>
         /// <returns>Хэшированную строку, пароль пользователя</returns>
         public static string GetHashPassword (string password) {
-            using (SHA256 sha256 = SHA256.Create()) {
-                byte[] bytePassword = Encoding.UTF8.GetBytes(password);
-                byte[] hashBytePassword = sha256.ComputeHash(bytePassword);
-                string hashPassword = BitConverter.ToString(hashBytePassword).Replace("-", string.Empty);
-                return hashPassword;
+            string hashPassword = "";
+            if (!string.IsNullOrEmpty(password)) {
+                using (SHA256 sha256 = SHA256.Create()) {
+                    byte[] bytePassword = Encoding.UTF8.GetBytes(password);
+                    byte[] hashBytePassword = sha256.ComputeHash(bytePassword);
+                    hashPassword = BitConverter.ToString(hashBytePassword).Replace("-", string.Empty);
+                }
             }
+            return hashPassword;
         }
     }
 }

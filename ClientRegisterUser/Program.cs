@@ -11,11 +11,17 @@ using System.Configuration;
 /// Клиент, который выполняет регистрацию пользователя
 /// </summary>
 
-namespace ClientRegisterUser {
-    internal class Program {
-        public static void Main() {
+namespace ClientRegisterUser
+{
+    internal class Program
+    {
+        public static void Main()
+        {
             Console.Write("Регистрация нового пользователя\n\n");
+
             string login, password, name, surname;
+            int result;
+
             Console.Write("Введите логин: ");
             login = Console.ReadLine();
             Console.Write("Введите пароль: ");
@@ -27,19 +33,28 @@ namespace ClientRegisterUser {
 
             password = Hash.GetHashPassword(password);
 
-            int result = DbCrud.UserInsert(login, password, name, surname);
+            // Проверка на пустые значения
+            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(name) &&
+                !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(surname)) {
+                result = DbCrud.UserInsert(login, password, name, surname);
+
+            } else {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Запрещено вводить пустые значения");
+                Console.ResetColor();
+                result = 0;
+            }
 
             if (result == 1) {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"Хэш пароля: {password}\nРегистрация нового пользователя проведена успешно");
-                Console.ResetColor();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"Хэш пароля: {password}\nРегистрация нового пользователя проведена успешно");
+                    Console.ResetColor();
             } else {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Регистрация провалена");
                 Console.ResetColor();
             }
-
             Console.Read();
+            }
         }
     }
-}
