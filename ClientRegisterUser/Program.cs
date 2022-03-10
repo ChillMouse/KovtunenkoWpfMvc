@@ -13,10 +13,8 @@ using System.Configuration;
 
 namespace ClientRegisterUser
 {
-    internal class Program
-    {
-        public static void Main()
-        {
+    internal class Program {
+        public static void Main() {
             Console.Write("Регистрация нового пользователя\n\n");
 
             string login, password, name, surname;
