@@ -29,5 +29,10 @@ namespace KovtunenkoWpfMvc.View.Windows {
             Pages.Users listUsers = new Pages.Users();
             MainFrame.Navigate(listUsers);
         }
+
+        private void btnProducts_Click(object sender, RoutedEventArgs e) {
+            Pages.Products listProducts = new Pages.Products();
+            MainFrame.Navigate(listProducts);
+        }
     }
 }

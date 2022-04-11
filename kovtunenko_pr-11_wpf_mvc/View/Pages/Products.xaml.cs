@@ -15,17 +15,17 @@ using System.Windows.Shapes;
 
 namespace KovtunenkoWpfMvc.View.Pages {
     /// <summary>
-    /// Логика взаимодействия для Users.xaml
+    /// Логика взаимодействия для Products.xaml
     /// </summary>
-    public partial class Users : Page {
-        public Users() {
+    public partial class Products : Page {
+        public Products() {
             InitializeComponent();
         }
 
-        private void DataGrid_Loaded(object sender, RoutedEventArgs e) {
+        private void gridOnPage_Loaded(object sender, RoutedEventArgs e) {
             var db = new Model.ShopEntities();
-            var users = db.Users.ToList();
-            gridOnPage.ItemsSource = users;
+            var products = db.Products.ToList();
+            gridOnPage.ItemsSource = products;
         }
     }
 }

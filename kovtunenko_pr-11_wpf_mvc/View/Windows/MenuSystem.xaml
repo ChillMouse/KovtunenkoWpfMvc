@@ -9,6 +9,7 @@
     <Grid>
         <Frame Content="Frame" Navigated="Frame_Navigated" Margin="138,0,0,0" Name="MainFrame"/>
         <Button Content="Пользователи" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Click="btnUsers_Click"/>
+        <Button Content="Товары" HorizontalAlignment="Left" Margin="48,89,0,0" VerticalAlignment="Top" Click="btnProducts_Click"/>
 
     </Grid>
 </Window>
