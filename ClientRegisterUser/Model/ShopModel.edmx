@@ -124,27 +124,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="ShopEntities" annotation:LazyLoadingEnabled="true" >
-          <EntitySet Name="CartCompositions" EntityType="ShopModel.CartCompositions" />
-          <EntitySet Name="Carts" EntityType="ShopModel.Carts" />
-          <EntitySet Name="Favorites" EntityType="ShopModel.Favorites" />
-          <EntitySet Name="FavoritesCompositions" EntityType="ShopModel.FavoritesCompositions" />
-          <EntitySet Name="Products" EntityType="ShopModel.Products" />
-          <EntitySet Name="UserProfile" EntityType="ShopModel.UserProfile" />
-          <EntitySet Name="Users" EntityType="ShopModel.Users" />
-          <AssociationSet Name="FK_Favorites_Users" Association="ShopModel.FK_Favorites_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Favorites" EntitySet="Favorites" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FavoritesCompositions_Products" Association="ShopModel.FK_FavoritesCompositions_Products">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="FavoritesCompositions" EntitySet="FavoritesCompositions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserProfile_Users" Association="ShopModel.FK_UserProfile_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="UserProfile" EntitySet="UserProfile" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="CartCompositions">
           <Key>
             <PropertyRef Name="id" />
@@ -167,7 +146,7 @@
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_composition" Type="Int64" />
           <Property Name="id_user" Type="Int64" />
-          <NavigationProperty Name="Users" Relationship="ShopModel.FK_Favorites_Users" FromRole="Favorites" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Favorites_Users" FromRole="Favorites" ToRole="Users" />
         </EntityType>
         <EntityType Name="FavoritesCompositions">
           <Key>
@@ -175,7 +154,7 @@
           </Key>
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_products" Type="Int64" />
-          <NavigationProperty Name="Products" Relationship="ShopModel.FK_FavoritesCompositions_Products" FromRole="FavoritesCompositions" ToRole="Products" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_FavoritesCompositions_Products" FromRole="FavoritesCompositions" ToRole="Products" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -184,7 +163,7 @@
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="count" Type="Int32" />
-          <NavigationProperty Name="FavoritesCompositions" Relationship="ShopModel.FK_FavoritesCompositions_Products" FromRole="Products" ToRole="FavoritesCompositions" />
+          <NavigationProperty Name="FavoritesCompositions" Relationship="Self.FK_FavoritesCompositions_Products" FromRole="Products" ToRole="FavoritesCompositions" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -194,7 +173,7 @@
           <Property Name="id_user" Type="Int64" />
           <Property Name="picture_profile" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="description" Type="String" MaxLength="140" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Users" Relationship="ShopModel.FK_UserProfile_Users" FromRole="UserProfile" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_UserProfile_Users" FromRole="UserProfile" ToRole="Users" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -205,13 +184,13 @@
           <Property Name="password" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="surname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Favorites" Relationship="ShopModel.FK_Favorites_Users" FromRole="Users" ToRole="Favorites" />
-          <NavigationProperty Name="UserProfile" Relationship="ShopModel.FK_UserProfile_Users" FromRole="Users" ToRole="UserProfile" />
+          <NavigationProperty Name="Favorites" Relationship="Self.FK_Favorites_Users" FromRole="Users" ToRole="Favorites" />
+          <NavigationProperty Name="UserProfile" Relationship="Self.FK_UserProfile_Users" FromRole="Users" ToRole="UserProfile" />
           <Property Name="role" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Favorites_Users">
-          <End Type="ShopModel.Users" Role="Users" Multiplicity="0..1" />
-          <End Type="ShopModel.Favorites" Role="Favorites" Multiplicity="*" />
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Favorites" Type="Self.Favorites" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="id" />
@@ -222,8 +201,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_FavoritesCompositions_Products">
-          <End Type="ShopModel.Products" Role="Products" Multiplicity="1" />
-          <End Type="ShopModel.FavoritesCompositions" Role="FavoritesCompositions" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="FavoritesCompositions" Type="Self.FavoritesCompositions" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Products">
               <PropertyRef Name="id" />
@@ -234,8 +213,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserProfile_Users">
-          <End Type="ShopModel.Users" Role="Users" Multiplicity="1" />
-          <End Type="ShopModel.UserProfile" Role="UserProfile" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="id" />
@@ -245,62 +224,83 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="ShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CartCompositions" EntityType="Self.CartCompositions" />
+          <EntitySet Name="Carts" EntityType="Self.Carts" />
+          <EntitySet Name="Favorites" EntityType="Self.Favorites" />
+          <EntitySet Name="FavoritesCompositions" EntityType="Self.FavoritesCompositions" />
+          <EntitySet Name="Products" EntityType="Self.Products" />
+          <EntitySet Name="UserProfile" EntityType="Self.UserProfile" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Favorites_Users" Association="Self.FK_Favorites_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Favorites" EntitySet="Favorites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoritesCompositions_Products" Association="Self.FK_FavoritesCompositions_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="FavoritesCompositions" EntitySet="FavoritesCompositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Users" Association="Self.FK_UserProfile_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ShopModelContainer" CdmEntityContainer="ShopEntities" >
+        <EntityContainerMapping StorageEntityContainer="Хранилище ShopModelContainer" CdmEntityContainer="ShopEntities">
           <EntitySetMapping Name="CartCompositions">
             <EntityTypeMapping TypeName="ShopModel.CartCompositions">
               <MappingFragment StoreEntitySet="CartCompositions">
-                <ScalarProperty Name="total" ColumnName="total" />
-                <ScalarProperty Name="id_product" ColumnName="id_product" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_product" ColumnName="id_product" />
+                <ScalarProperty Name="total" ColumnName="total" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Carts">
             <EntityTypeMapping TypeName="ShopModel.Carts">
               <MappingFragment StoreEntitySet="Carts">
-                <ScalarProperty Name="id_composition" ColumnName="id_composition" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_composition" ColumnName="id_composition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Favorites">
             <EntityTypeMapping TypeName="ShopModel.Favorites">
               <MappingFragment StoreEntitySet="Favorites">
-                <ScalarProperty Name="id_user" ColumnName="id_user" />
-                <ScalarProperty Name="id_composition" ColumnName="id_composition" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_composition" ColumnName="id_composition" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FavoritesCompositions">
             <EntityTypeMapping TypeName="ShopModel.FavoritesCompositions">
               <MappingFragment StoreEntitySet="FavoritesCompositions">
-                <ScalarProperty Name="id_products" ColumnName="id_products" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_products" ColumnName="id_products" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="ShopModel.Products">
               <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="count" ColumnName="count" />
-                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="count" ColumnName="count" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserProfile">
             <EntityTypeMapping TypeName="ShopModel.UserProfile">
               <MappingFragment StoreEntitySet="UserProfile">
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="picture_profile" ColumnName="picture_profile" />
-                <ScalarProperty Name="id_user" ColumnName="id_user" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="picture_profile" ColumnName="picture_profile" />
+                <ScalarProperty Name="description" ColumnName="description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -308,11 +308,11 @@
             <EntityTypeMapping TypeName="ShopModel.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="role" ColumnName="role" />
-                <ScalarProperty Name="surname" ColumnName="surname" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

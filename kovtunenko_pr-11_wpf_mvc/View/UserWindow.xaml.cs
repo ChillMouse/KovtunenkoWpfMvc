@@ -12,15 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace KovtunenkoWpfMvc.View
-{
+namespace KovtunenkoWpfMvc.View {
     /// <summary>
-    /// Логика взаимодействия для MenuSystem.xaml
+    /// Логика взаимодействия для UserWindow.xaml
     /// </summary>
-    public partial class MenuSystem : Window
-    {
-        public MenuSystem()
-        {
+    public partial class UserWindow : Window {
+        public UserWindow() {
             InitializeComponent();
         }
     }

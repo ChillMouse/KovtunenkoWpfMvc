@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\denis\source\repos\kovtunenko_wpf-pr-11\kovtunenko_pr-11_wpf_mvc\Model\ShopModel.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\denis\source\repos\kovtunenko_wpf-pr-11\ClientRegisterUser\Model\ShopModel.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

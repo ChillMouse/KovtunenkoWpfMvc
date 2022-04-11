@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HashPasswords;
 
 /// <summary>
 /// Автор ChillMouse
@@ -34,19 +35,55 @@ namespace KovtunenkoWpfMvc
         /// <param name="sender">Объект инициатора вызова</param>
         /// <param name="e"></param>
         private void AuthInApp(object sender, RoutedEventArgs e) {
-            View.MenuSystem windowMenuSystem = new View.MenuSystem();
-            windowMenuSystem.Show();
-        }
-/// <summary>
-/// Отслеживания нажатия на кнопку "Нажать".
-/// Происходит отображение содержимого Content в кнопке.
-/// </summary>
-/// <param name="sender">Объект инициатора вызова функции</param>
-/// <param name="e"></param>
-        private void EventClickTest(object sender, RoutedEventArgs e) {
-            if (sender is Button btnAuthorization) {
-                MessageBox.Show($"Нажата кнопка \"{btnAuthorization.Content}\"");
+            string login = txtBoxLogin.Text;
+            string password = txtBoxPassword.Password;
+            string targetWindow = "";
+            responseLabel.Content = "Вход...";
+
+            string userRole = UserSelect(login, password);
+
+            switch (userRole) {
+                case "user":
+                    targetWindow = "user";
+                    break;
+                case "admin":
+                    targetWindow = "admin";
+                    break;
             }
+
+            switch (targetWindow) {
+                case "user":
+                    responseLabel.Content = "Успешно";
+                    Window uw = new View.UserWindow();
+                    uw.Show();
+                    break;
+                case "admin":
+                    responseLabel.Content = "Успешно";
+                    Window aw = new View.AdminWindow();
+                    aw.Show();
+                    break;
+                default:
+                    responseLabel.Content = "Такого пользователя нет";
+                    Console.WriteLine("Целевое окно перехода после авторизации не задано.");
+                    break;
+            }
+        }
+        public static string UserSelect(string login, string password) {
+            string roleUser = "n/a";
+            try {
+                Model.ShopEntities db = new Model.ShopEntities();
+
+                string hashedPassword = Hash.GetHashPassword(password);
+
+                var findedUser = db.Users.Where(r => r.username == login).Where(r => r.password == hashedPassword);
+
+                if (findedUser != null) {
+                    roleUser = findedUser.First().role;
+                }
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+            return roleUser;
         }
     }
 
