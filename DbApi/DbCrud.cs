@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 namespace DbApiCore {
     public static class DbCrud {
         public static int UserInsert(string login, string password, string name, string surname) {
-            string connectionString = @"Data Source=DESKTOP-PEI2NKM;Initial Catalog=Shop;Integrated Security=True";
-            int rowChanged = 0;
+            int result;
             try {
-                using (SqlConnection connection = new SqlConnection(connectionString)){
-                    connection.Open();
-                    SqlCommand cmd = new SqlCommand
-                    {
-                        CommandText = $"INSERT INTO [Users] (username, password, name, surname) VALUES ('{login}', '{password}', '{name}', '{surname}');",
-                        Connection = connection
-                    };
-                    rowChanged = cmd.ExecuteNonQuery();
-                    connection.Close();
-                }
+                Model.ShopEntities db = new DbApi.Model.ShopEntities();
+                var newUser = new DbApi.Model.Users {
+                    username = login,
+                    password = password,
+                    name = name,
+                    surname = surname
+                };
+                db.Users.Add(newUser);
+                db.SaveChanges();
+                result = 1;
             } catch (Exception e) {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(e.Message);
                 Console.ResetColor();
+                result = 0;
             }
-            return Convert.ToInt32(rowChanged > 0);
+            return result;
         }
     }
 }

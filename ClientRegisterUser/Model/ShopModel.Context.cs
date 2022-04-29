@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KovtunenkoWpfMvc.Model
+namespace ClientRegisterUser.Model
 {
     using System;
     using System.Data.Entity;

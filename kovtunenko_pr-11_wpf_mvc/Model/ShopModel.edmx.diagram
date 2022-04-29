@@ -4,7 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2c9c4c76df634b9096b75142059c110c" Name="Diagram1" />
+      <Diagram DiagramId="2c9c4c76df634b9096b75142059c110c" Name="Diagram1" >
+        <EntityTypeShape EntityType="ShopModel.CartCompositions" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ShopModel.Carts" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ShopModel.Favorites" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="ShopModel.FavoritesCompositions" Width="1.5" PointX="8" PointY="1" />
+        <EntityTypeShape EntityType="ShopModel.Products" Width="1.5" PointX="5.75" PointY="0.875" />
+        <EntityTypeShape EntityType="ShopModel.UserProfile" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="ShopModel.Users" Width="1.5" PointX="0.75" PointY="2.125" />
+        <AssociationConnector Association="ShopModel.FK_Favorites_Users" />
+        <AssociationConnector Association="ShopModel.FK_FavoritesCompositions_Products" />
+        <AssociationConnector Association="ShopModel.FK_UserProfile_Users" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
