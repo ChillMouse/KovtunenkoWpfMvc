@@ -31,7 +31,7 @@ namespace KovtunenkoWpfMvc.View.Windows {
         }
 
         private void btnProducts_Click(object sender, RoutedEventArgs e) {
-            Pages.Products listProducts = new Pages.Products();
+            Pages.TableOfProducts listProducts = new Pages.TableOfProducts();
             MainFrame.Navigate(listProducts);
         }
     }

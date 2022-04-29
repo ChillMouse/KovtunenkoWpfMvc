@@ -9,7 +9,15 @@
       Title="Page">
 
     <Grid>
-        <DataGrid x:Name="gridOnPage" d:ItemsSource="{d:SampleData ItemCount=5}" Loaded="DataGrid_Loaded"/>
-
+        <DataGrid x:Name="gridOnPage" Loaded="DataGrid_Loaded" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Binding="{Binding name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Surname" Binding="{Binding surname}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Role" Binding="{Binding role}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Username" Binding="{Binding username}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Password" Binding="{Binding password}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

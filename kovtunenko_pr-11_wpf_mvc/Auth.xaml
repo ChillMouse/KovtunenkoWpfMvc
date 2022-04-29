@@ -1,0 +1,81 @@
+<Window x:Class="KovtunenkoWpfMvc.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KovtunenkoWpfMvc"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <ControlTemplate x:Key="TextBoxTemplateStyle" TargetType="{x:Type TextBoxBase}">
+            <Border CornerRadius="15" x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="true">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Grid">
+                <Setter Property="Background" Value="Black" />
+            </Style>
+            <Style TargetType="Window">
+                <Setter Property="Background" Value="Black" />
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontFamily" Value="Mistral" />
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontFamily" Value="Mistral" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Background" Value="Black" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontFamily" Value="Mistral" />
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Name="txtBlockHeader" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="0" TextWrapping="NoWrap" Text="Авторизация" FontSize="24" VerticalAlignment="Top" Width="160" Height="57" Grid.ColumnSpan="2"/>
+        <Button Template="{DynamicResource ButtonRadiusStyle}" Name="btnAuth" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Top" Height="37" Width="245" Grid.ColumnSpan="2" Margin="11,36,0,0" Grid.RowSpan="5" Content="Авторизоваться" FontSize="20" Click="AuthInApp">
+        </Button>
+        <TextBox Template="{DynamicResource TextBoxTemplateStyle}" Grid.Column="3" Name="txtBoxLogin" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="158" FontSize="20" Margin="13,0,0,0" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Column="2" Name="txtBlockLogin" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Center" FontSize="20"/>
+        <TextBlock Grid.Column="2" Name="txtBlockPassword" HorizontalAlignment="Left" Margin="0,15,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" FontSize="20"/>
+        <Label Name="responseLabel"  Grid.Column="2" Content="" HorizontalAlignment="Center" Margin="0,55,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <PasswordBox x:Name="txtBoxPassword" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="13,15,0,0" Grid.Row="3" VerticalAlignment="Top" Width="158" Height="29"/>
+
+    </Grid>
+</Window>
